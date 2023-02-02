@@ -1,6 +1,7 @@
 import cv2
 import time
 import datetime
+from playsound import playsound
 
 cap = cv2.VideoCapture(0)
 
@@ -47,8 +48,9 @@ while True:
     if detection:
         out.write(frame)
 
-    # for (x, y, width, height) in faces:
-    #    cv2.rectangle(frame, (x, y), (x + width, y + height), (255, 0, 0), 3)
+    for (x, y, width, height) in faces:
+        cv2.rectangle(frame, (x, y), (x + width, y + height), (255, 0, 0), 3)
+        playsound("beep-09.wav")
 
     cv2.imshow("Camera", frame)
 
